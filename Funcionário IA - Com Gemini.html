@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação Interativa: IA para Clínicas</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .chat-bubble {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 0.5s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .typing-indicator span {
+            animation: blink 1.4s infinite both;
+        }
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes blink {
+            0%, 80%, 100% { opacity: 0; }
+            40% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div id="presentation-container">
+
+        <section id="slide1" class="slide active text-center bg-slate-100">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900">Sua clínica está deixando dinheiro na mesa?</h1>
+                <p class="mt-4 text-lg md:text-2xl text-slate-600">Cada paciente não atendido no WhatsApp é uma consulta perdida. <span class="font-bold text-red-500">Hoje.</span></p>
+                <div class="mt-8 bg-white p-6 rounded-xl shadow-lg border border-slate-200">
+                    <p class="text-xl font-semibold text-slate-800">Agendamentos perdidos este mês:</p>
+                    <p id="missed-counter" class="text-7xl font-bold text-red-600 my-4">0</p>
+                    <p class="text-slate-500">...e contando. Isso acontece por demora na resposta, atendimento fora do horário e falta de acompanhamento.</p>
+                </div>
+                <a href="#slide2" class="mt-10 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-teal-700 transition-colors">Descubra como parar o vazamento</a>
+            </div>
+        </section>
+
+        <section id="slide2" class="slide text-center">
+            <div class="max-w-3xl">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900">Conheça sua nova funcionária.</h2>
+                <p class="mt-4 text-lg md:text-2xl text-teal-600 font-semibold">A Atendente Virtual com Inteligência Artificial.</p>
+                <p class="mt-2 text-slate-600">Trabalha 24/7, nunca se cansa e atende 100% dos seus pacientes em menos de 5 segundos.</p>
+                <div class="mt-8 w-full bg-white p-6 rounded-xl shadow-lg border border-slate-200">
+                    <h3 class="font-bold text-xl mb-4">O Fluxo de Atendimento Perfeito</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 text-slate-700">
+                        <div class="flex items-center flex-col text-center">
+                            <i data-lucide="user-plus" class="h-12 w-12 text-sky-500"></i>
+                            <p class="mt-2 font-semibold">Novo Paciente</p>
+                            <p class="text-sm text-slate-500">Entra em contato</p>
+                        </div>
+                        <i data-lucide="arrow-right" class="h-8 w-8 text-slate-300 hidden md:block"></i>
+                        <i data-lucide="arrow-down" class="h-8 w-8 text-slate-300 md:hidden"></i>
+                        <div class="flex items-center flex-col text-center">
+                            <i data-lucide="bot" class="h-12 w-12 text-teal-500"></i>
+                            <p class="mt-2 font-semibold">Funcionária de IA</p>
+                            <p class="text-sm text-slate-500">Atende e qualifica 24/7</p>
+                        </div>
+                        <i data-lucide="arrow-right" class="h-8 w-8 text-slate-300 hidden md:block"></i>
+                        <i data-lucide="arrow-down" class="h-8 w-8 text-slate-300 md:hidden"></i>
+                        <div class="flex items-center flex-col text-center">
+                            <i data-lucide="calendar-check" class="h-12 w-12 text-green-500"></i>
+                            <p class="mt-2 font-semibold">Consulta Agendada</p>
+                            <p class="text-sm text-slate-500">Direto na sua agenda</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#slide3" class="mt-10 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-teal-700 transition-colors">Veja a mágica acontecer</a>
+            </div>
+        </section>
+
+        <section id="slide3" class="slide w-full bg-slate-100">
+            <div class="w-full max-w-3xl text-center">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900">Converse com a IA.</h2>
+                <p class="mt-4 text-lg md:text-2xl text-slate-600">Digite como se estivesse falando com um atendente humano. Tente agendar uma consulta, perguntar preços ou sobre um tratamento.</p>
+                
+                <div class="mt-8 w-full max-w-md mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="bg-slate-200 p-3 flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-xl mr-3">LS</div>
+                        <div>
+                            <p class="font-bold text-slate-800">Sofia (Atendente Virtual)</p>
+                            <p class="text-sm text-green-600">online</p>
+                        </div>
+                    </div>
+                    <div id="chat-window" class="p-4 h-96 overflow-y-auto space-y-4 bg-slate-50 flex-1">
+                        </div>
+                    <div class="p-2 border-t border-slate-200 bg-white flex items-center">
+                        <input type="text" id="chat-input" placeholder="Digite sua mensagem..." class="w-full px-4 py-2 border-2 border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
+                        <button id="send-btn" class="ml-2 p-3 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors">
+                            <i data-lucide="send" class="h-5 w-5"></i>
+                        </button>
+                    </div>
+                </div>
+                 <a href="#slide4" class="mt-10 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-teal-700 transition-colors">Impressionante, né? Veja os benefícios</a>
+            </div>
+        </section>
+
+        <section id="slide4" class="slide text-center">
+            <div class="max-w-4xl">
+                 <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900">Mais que um robô, um motor de crescimento.</h2>
+                 <p class="mt-4 text-lg md:text-2xl text-slate-600">O que sua clínica ganha na prática?</p>
+                 <div class="mt-10 grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 text-center">
+                        <i data-lucide="trending-up" class="h-12 w-12 text-green-500 mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-800">Aumento de Agendamentos</h3>
+                        <p class="mt-2 text-slate-600">Converta o interesse gerado nas redes sociais em pacientes na sua cadeira, sem perder ninguém por demora na resposta.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 text-center">
+                        <i data-lucide="users" class="h-12 w-12 text-sky-500 mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-800">Eficiência da Equipe</h3>
+                        <p class="mt-2 text-slate-600">Sua equipe de recepção fica livre do trabalho repetitivo e pode focar em oferecer um atendimento excepcional aos pacientes que já estão na clínica.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-200 text-center">
+                        <i data-lucide="smile" class="h-12 w-12 text-amber-500 mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-800">Experiência do Paciente</h3>
+                        <p class="mt-2 text-slate-600">Ofereça um atendimento premium, instantâneo e profissional desde o primeiro contato, 24 horas por dia, 7 dias por semana.</p>
+                    </div>
+                 </div>
+                 <a href="#slide5" class="mt-12 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-teal-700 transition-colors">Vamos falar sobre o seu retorno?</a>
+            </div>
+        </section>
+        <section id="slide5" class="slide text-center bg-slate-100">
+            <div class="max-w-3xl">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900">A IA se paga. E rápido.</h2>
+                <p class="mt-4 text-lg md:text-2xl text-slate-600">Vamos fazer uma conta simples.</p>
+                <div class="mt-8 bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                    <label for="consulta-valor" class="block text-lg font-medium text-slate-700">Qual o valor médio de uma consulta ou procedimento inicial?</label>
+                    <div class="flex items-center justify-center mt-4">
+                        <span class="text-2xl font-semibold text-slate-500 mr-2">R$</span>
+                        <input type="number" id="consulta-valor" value="300" class="w-48 text-center text-4xl font-bold bg-slate-100 border-2 border-slate-300 rounded-lg focus:ring-teal-500 focus:border-teal-500">
+                    </div>
+                    <div id="roi-result" class="mt-6 text-xl text-slate-800 bg-teal-50 p-4 rounded-lg border border-teal-200"></div>
+                </div>
+                 <a href="#slide6" class="mt-10 inline-block bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-teal-700 transition-colors">Interessante? Vamos para o próximo passo</a>
+            </div>
+        </section>
+        <section id="slide6" class="slide text-center">
+            <div class="max-w-3xl">
+                 <div class="w-24 h-24 rounded-full bg-teal-500 flex items-center justify-center text-white mx-auto mb-6">
+                    <i data-lucide="calendar-plus" class="h-12 w-12"></i>
+                 </div>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900">Pronto para transformar seu atendimento?</h2>
+                <p class="mt-4 text-lg md:text-2xl text-slate-600">O próximo passo é um diagnóstico gratuito de 15 minutos, onde vamos desenhar uma solução personalizada para a sua clínica.</p>
+                <div class="mt-8">
+                    <a href="mailto:seuemail@suaagencia.com?subject=Diagnóstico Gratuito para Minha Clínica" class="bg-green-600 text-white font-bold py-4 px-10 rounded-lg text-xl hover:bg-green-700 transition-colors">
+                        Agendar Diagnóstico Gratuito
+                    </a>
+                </div>
+                <div class="mt-10 text-slate-500">
+                    <p>Ou entre em contato:</p>
+                    <p class="font-semibold">[Seu Nome]</p>
+                    <p>[Seu Telefone / WhatsApp]</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Ativa os ícones do Lucide
+        lucide.createIcons();
+
+        // Lógica dos Slides
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+        slides.forEach(slide => observer.observe(slide));
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Contador Slide 1
+        const counter = document.getElementById('missed-counter');
+        let count = 0;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 3) + 1;
+            counter.textContent = count;
+        }, 2500);
+
+        // --- LÓGICA DO CHAT COM MEMÓRIA ---
+        const chatWindow = document.getElementById('chat-window');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        let conversationHistory = [];
+
+        function addMessage(from, text) {
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble max-w-xs md:max-w-sm p-3 rounded-2xl ${from === 'bot' ? 'bg-slate-200 self-start' : 'bg-teal-500 text-white self-end'}`;
+            bubble.innerHTML = text.replace(/\n/g, '<br>');
+            chatWindow.appendChild(bubble);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typing';
+            typingDiv.className = 'chat-bubble self-start';
+            typingDiv.innerHTML = `<div class="typing-indicator bg-slate-200 rounded-2xl p-3 inline-block"><span></span><span></span><span></span></div>`;
+            chatWindow.appendChild(typingDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typingDiv = document.getElementById('typing');
+            if (typingDiv) typingDiv.remove();
+        }
+
+        async function handleUserInput() {
+            const userInputText = chatInput.value.trim();
+            if (!userInputText) return;
+
+            addMessage('user', userInputText);
+            chatInput.value = '';
+
+            conversationHistory.push({
+                role: "user",
+                parts: [{ text: userInputText }]
+            });
+
+            showTypingIndicator();
+
+            // COLE A URL DO SEU NOVO PROJETO APPS SCRIPT AQUI
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbyt8VbWjPy23PHJiO71XUXLYEW4Sb1cwa6mPORF9T8RDofRNmnIyJPx-ii-ClAXYrHbQg/exec';
+
+            try {
+                const response = await fetch(webAppUrl, {
+                    method: 'POST',
+                    body: JSON.stringify({ history: conversationHistory }),
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                });
+
+                if (!response.ok) throw new Error('A resposta do servidor não foi OK');
+                
+                const data = await response.json();
+                const botResponseText = data.response;
+
+                removeTypingIndicator();
+                addMessage('bot', botResponseText);
+
+                conversationHistory.push({
+                    role: "model",
+                    parts: [{ text: botResponseText }]
+                });
+
+            } catch (error) {
+                console.error('Erro ao obter resposta da IA:', error);
+                removeTypingIndicator();
+                addMessage('bot', 'Desculpe, não consegui me conectar. Por favor, tente novamente.');
+                conversationHistory.pop();
+            }
+        }
+
+        sendBtn.addEventListener('click', handleUserInput);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleUserInput();
+        });
+
+        function startChat() {
+            chatWindow.innerHTML = '';
+            conversationHistory = [];
+            const initialBotMessage = 'Olá! 😊 Sou a Sofia, atendente virtual da Clínica Sorriso Perfeito. Como posso te ajudar hoje?';
+            
+            showTypingIndicator();
+             setTimeout(() => {
+                removeTypingIndicator();
+                addMessage('bot', initialBotMessage);
+                conversationHistory.push({
+                    role: 'model',
+                    parts: [{ text: initialBotMessage }]
+                });
+            }, 1000);
+        }
+
+        const chatSlideObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && chatWindow.children.length === 0) {
+                    startChat();
+                }
+            });
+        }, { threshold: 0.5 });
+        chatSlideObserver.observe(document.getElementById('slide3'));
+
+        // Calculadora de ROI
+        const valorInput = document.getElementById('consulta-valor');
+        const roiResult = document.getElementById('roi-result');
+        const custoMensalIA = 1500;
+        function calculateROI() {
+            const valorConsulta = parseFloat(valorInput.value) || 0;
+            if (valorConsulta > 0) {
+                const agendamentosNecessarios = Math.ceil(custoMensalIA / valorConsulta);
+                roiResult.innerHTML = `Com apenas <strong class="text-teal-600 text-2xl">${agendamentosNecessarios} novo(s) agendamento(s)</strong> no mês, a IA já se paga e começa a gerar <strong class="text-green-600">lucro</strong> para sua clínica.`;
+            } else {
+                roiResult.textContent = 'Por favor, insira um valor válido para a consulta.';
+            }
+        }
+        valorInput.addEventListener('input', calculateROI);
+        calculateROI();
+    </script>
+</body>
+</html>
