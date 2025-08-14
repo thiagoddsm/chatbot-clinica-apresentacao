@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apresentação Interativa: IA para Clínicas</title>
+    <title>Funcionário IA</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -111,14 +111,14 @@
 
         <section id="slide3" class="slide w-full bg-slate-100">
             <div class="w-full max-w-3xl text-center">
-                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900">Converse com a IA.</h2>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900">Simule uma conversa</h2>
                 <p class="mt-4 text-lg md:text-2xl text-slate-600">Digite como se estivesse falando com um atendente humano. Tente agendar uma consulta, perguntar preços ou sobre um tratamento.</p>
                 
                 <div class="mt-8 w-full max-w-md mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col">
                     <div class="bg-slate-200 p-3 flex items-center">
                         <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-xl mr-3">LS</div>
                         <div>
-                            <p class="font-bold text-slate-800">Sofia (Atendente Virtual)</p>
+                            <p class="font-bold text-slate-800">Sofia</p>
                             <p class="text-sm text-green-600">online</p>
                         </div>
                     </div>
@@ -188,8 +188,8 @@
                 </div>
                 <div class="mt-10 text-slate-500">
                     <p>Ou entre em contato:</p>
-                    <p class="font-semibold">[Seu Nome]</p>
-                    <p>[Seu Telefone / WhatsApp]</p>
+                    <p class="font-semibold">Thiago Moura ou Henrique Longobuco</p>
+                    <p>21 98900-1302 ou 21 98797-2005</p>
                 </div>
             </div>
         </section>
@@ -309,7 +309,7 @@
         function startChat() {
             chatWindow.innerHTML = '';
             conversationHistory = [];
-            const initialBotMessage = 'Olá! 😊 Sou a Sofia, atendente virtual da Clínica Sorriso Perfeito. Como posso te ajudar hoje?';
+            const initialBotMessage = 'Olá! 😊 Sou a Sofia, atendente virtual da Empresa RJ. Como posso te ajudar hoje?';
             
             showTypingIndicator();
              setTimeout(() => {
@@ -334,7 +334,7 @@
         // Calculadora de ROI
         const valorInput = document.getElementById('consulta-valor');
         const roiResult = document.getElementById('roi-result');
-        const custoMensalIA = 1500;
+        const custoMensalIA = 300;
         function calculateROI() {
             const valorConsulta = parseFloat(valorInput.value) || 0;
             if (valorConsulta > 0) {
@@ -349,3 +349,4 @@
     </script>
 </body>
 </html>
+
